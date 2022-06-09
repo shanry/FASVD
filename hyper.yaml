@@ -1,0 +1,149 @@
+home: "data"
+cora:
+    words:
+        c: 1.0
+        score_train:  0.9889 
+        score_test:  0.7610
+    feats: 
+        truncate: 512
+        c: 80
+        score_train:  0.9098 
+        score_test:  0.7810
+    svd: 
+        truncate: 512
+        c: 100
+        score_train:  0.9133 
+        score_test:  0.7790
+    vecs:
+        dimension: 128
+        c: 0.5
+        score_train:  0.8835 
+        score_test:  0.8200
+        
+    vecs_svd_pre:
+        c: 1.0
+        score_train:  0.9052
+        score_test:  0.8300
+    vecs_words_pre:
+        c: 1.0
+        score_train:  0.9936
+        score_test:  0.8510
+    vecs_svd_words_pre:
+        c: 1.0
+        score_train: 0.9561
+        score_test: 0.8520
+        
+    vecs_svd_post:
+        c: 1.0
+        score_train:  0.9268
+        score_test:  0.8400
+    vecs_words_post:
+        c: 1.0
+        score_train:  0.9936
+        score_test:  0.8260
+    vecs_svd_words_post:
+        c: 1.0
+        score_train:  0.9936
+        score_test:  0.8560
+        
+citeseer:
+    words:
+        c: 0.1
+        score_train: 0.9420
+        score_test: 0.7310
+    feats: 
+        truncate: 512
+        c: 25
+        score_train:  0.7189 
+        score_test:  0.6200
+    vecs:
+        dimension: 100
+        c: 0.1
+        score_train:  0.6708
+        score_test:  0.6080
+    vecs_feats:
+        c: 10
+        score_train: 0.7608
+        score_test: 0.6230 
+    vecs_feats_2:
+        c: 1.0
+        score_train: 0.7552
+        score_test: 0.6380 
+    vecs_feats_words:
+        c: 10
+        score_train: 0.7608
+        score_test: 0.7340
+    vecs_feats_words_2:
+        c: 50
+        score_train:  0.9632
+        score_test:  0.7330
+        
+cora_ml:
+    vecs:
+        dimension: 128
+        c: 0.1
+        score_train: 0.8647
+        score_test: 0.8470
+        
+facebook:
+    words:
+        c: 1.0
+        score_train:  0.9550 
+        score_test:  0.7310
+    jaccard: 
+        truncate: 512
+        auc:   0.9703
+        n=5:   0.0891
+        n=10:  0.1777
+        n=15:  0.2402
+        n=20:  0.2854
+        n=25:  0.3477
+        n=30:  0.3745
+        n=35:  0.3768
+        n=40:  0.4281
+    vecs:
+        dimension: 200
+        auc:   0.9756
+        n=5:   0.4038
+        n=10:  0.5909
+        n=15:  0.6495
+        n=20:  0.6998
+        n=25:  0.7154
+        n=30:  0.6994
+        n=35:  0.7056
+        n=40:  0.7108
+    vecs:
+        precision_K: 0.1312
+    cvecs:
+        precision_K: 0.1386
+        precision_K_2: 0.1384
+        
+email:
+    spectral:
+        n=5:   0.0891
+        n=10:  0.1777
+        n=15:  0.2402
+        n=20:  0.2854
+        n=25:  0.3477
+        n=30:  0.3745
+        n=35:  0.3768
+        n=40:  0.4281 
+    
+    vecs:
+        n=5, nmi:  0.3965
+        n=10, nmi:  0.6085
+        n=15, nmi:  0.6356
+        n=20, nmi:  0.6772
+        n=25, nmi:  0.6890
+        n=30, nmi:  0.7146
+        n=35, nmi:  0.7067
+        n=40, nmi:  0.6978
+    cvecs:
+        n=5, nmi:  0.3958
+        n=10, nmi:  0.5895
+        n=15, nmi:  0.6588
+        n=20, nmi:  0.6876
+        n=25, nmi:  0.7124
+        n=30, nmi:  0.6973
+        n=35, nmi:  0.7122
+        n=40, nmi:  0.7114
