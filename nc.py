@@ -233,6 +233,14 @@ def main(args):
         path_save = os.path.join(args.data_home, args.dataset, 'esvd_pre.joblib')
         dump(model, path_save)
         
+        feats_hstack = np.hstack((words, nodes2vecs))
+        # feats_hstack = np.hstack((eigen_vectors[:, :args.truncate], nodes2vecs))
+        print(f"feats_hstack.shape: {feats_hstack.shape}, labels.shape: {labels.shape}")
+        model = learn(feats_hstack, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
+        from joblib import dump
+        path_save = os.path.join(args.data_home, args.dataset, 'esvd_pre_nosvd.joblib')
+        dump(model, path_save)
+        
         feats_hstack = np.hstack((words, eigen_vectors[:, :args.truncate], nodes2vecs))
         # feats_hstack = np.hstack((eigen_vectors[:, :args.truncate], nodes2vecs))
         print(f"feats_hstack.shape: {feats_hstack.shape}, labels.shape: {labels.shape}")
@@ -241,13 +249,7 @@ def main(args):
         path_save = os.path.join(args.data_home, args.dataset, 'esvd_pre_all.joblib')
         dump(model, path_save)
         
-        feats_hstack = np.hstack((words, nodes2vecs))
-        # feats_hstack = np.hstack((eigen_vectors[:, :args.truncate], nodes2vecs))
-        print(f"feats_hstack.shape: {feats_hstack.shape}, labels.shape: {labels.shape}")
-        model = learn(feats_hstack, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
-        from joblib import dump
-        path_save = os.path.join(args.data_home, args.dataset, 'esvd_pre_nosvd.joblib')
-        dump(model, path_save)
+        
         
     if args.es2:
         index = np.arange(len(labels))
@@ -349,19 +351,12 @@ def main(args):
         print(f"score_train: {score_train: .4f}, score_test: {score_test: .4f}")
         prob_words = model_words.predict_proba(words)
                 
-#         probs_two = np.hstack((prob_feats, prob_vecs))
-#         print(f"probs_two.shape: {probs_two.shape}, labels.shape: {labels.shape}")
-#         model = learn(probs_two, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
-#         from joblib import dump
-#         path_save = os.path.join(args.data_home, args.dataset, 'esvd_post.joblib')
-#         dump(model, path_save)
-        
-#         probs_three = np.hstack((prob_feats, prob_vecs, prob_words))
-#         print(f"probs_three.shape: {probs_three.shape}, labels.shape: {labels.shape}")
-#         model = learn(probs_three, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
-#         from joblib import dump
-#         path_save = os.path.join(args.data_home, args.dataset, 'esvd_post_all.joblib')
-#         dump(model, path_save)
+        probs_two = np.hstack((prob_feats, prob_vecs))
+        print(f"probs_two.shape: {probs_two.shape}, labels.shape: {labels.shape}")
+        model = learn(probs_two, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
+        from joblib import dump
+        path_save = os.path.join(args.data_home, args.dataset, 'esvd_post.joblib')
+        dump(model, path_save)
         
         probs_nosvd = np.hstack((prob_vecs, prob_words))
         print(f"probs_three.shape: {probs_nosvd.shape}, labels.shape: {labels.shape}")
@@ -369,6 +364,14 @@ def main(args):
         from joblib import dump
         path_save = os.path.join(args.data_home, args.dataset, 'esvd_post_nosvd.joblib')
         dump(model, path_save)
+        
+        probs_three = np.hstack((prob_feats, prob_vecs, prob_words))
+        print(f"probs_three.shape: {probs_three.shape}, labels.shape: {labels.shape}")
+        model = learn(probs_three, labels, C_list=args.c_list, iter_max=args.iter_max, pca=args.pca, c_best=args.c_best)
+        from joblib import dump
+        path_save = os.path.join(args.data_home, args.dataset, 'esvd_post_all.joblib')
+        dump(model, path_save)
+        
         
     return
 
