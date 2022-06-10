@@ -46,8 +46,11 @@ class SvdDataset(Dataset):
     def __getitem__(self, idx):
         # if torch.is_tensor(idx):
         #     idx = idx.tolist()
-
-        images = Image.open(self.files_list[idx])
+        if self.files_list_svd is None or  np.random.rand() <= 0.5:
+            images = Image.open(self.files_list[idx])
+        else:
+            images = Image.open(self.files_list_svd[idx])
+            
         labels = self.labels[idx]
         
         if self.transform:
