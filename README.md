@@ -33,7 +33,7 @@ python nc.py --dataset citeseer --words  --c_best 0.1  \
 python nc.py --dataset citeseer --vecs  --c_best 0.1  \
 python nc.py --dataset citeseer --svd  --c_best 20  \
 python nc.py --dataset citeseer --esvd  --c_list 10 15  \
-python nc.py --dataset citeseer --esvd2  --c_list 5 10  
+python nc.py --dataset citeseer --esvd2  --c_list 1 5 
 
 ## Image classification
 run the notebook classify.ipynb
