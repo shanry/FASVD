@@ -1,0 +1,9 @@
+gensim==4.2.0
+joblib==1.1.0
+networkx==2.8.3
+node2vec==0.4.5
+numpy==1.22.4
+Pillow==9.1.1
+scikit_learn==1.1.1
+torch==1.11.0
+torchvision==0.12.0
